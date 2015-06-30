@@ -14,7 +14,7 @@ public class TimeRecorder
 	private String				TAG			= "TimeRecorder";
 	private List<Long>			timePoints	= new ArrayList<>();
 	private int					limitSize	= 1000;
-	private static TimeRecorder instance;
+	private static TimeRecorder	instance;
 
 	public static TimeRecorder getInstance()
 	{
@@ -114,9 +114,11 @@ public class TimeRecorder
 
 	/**
 	 * 设置监听器
+	 * 
 	 * @param listener
 	 */
-	public void setListener(OnRecodListener listener) {
+	public void setListener(OnRecodListener listener)
+	{
 		this.listener = listener;
 	}
 
@@ -138,23 +140,10 @@ public class TimeRecorder
 		 * @param removetime
 		 *            删除的最先记录
 		 * @param limitsize
-		 *            限制大小
+		 *            限制记录数量
 		 */
 		public void onLimit(long removetime, int limitsize);
 	}
 
-	private OnRecodListener	listener	= new OnRecodListener()
-										{
-											@Override
-											public void onRecord(long recordtime, int reocrdsize)
-											{
-
-											}
-
-											@Override
-											public void onLimit(long removetime, int limitsize)
-											{
-
-											}
-										};
+	private OnRecodListener	listener;
 }
