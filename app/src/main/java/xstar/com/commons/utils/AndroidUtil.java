@@ -18,186 +18,201 @@ import android.widget.Toast;
 /**
  * Created by Administrator on 2015/6/29.
  */
-public class AndroidUtil {
+public class AndroidUtil
+{
 
-    /**
-     * »ñÈ¡ÆÁÄ»³ß´çÐÅÏ¢
-     * @param context
-     * @return
-     */
-    public static DisplayMetrics getScreenSize(Context context)
-    {
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        DisplayMetrics dm = new DisplayMetrics();
-        wm.getDefaultDisplay().getMetrics(dm);
-        return dm;
-    }
+	/**
+	 * ï¿½ï¿½È¡ï¿½ï¿½Ä»ï¿½ß´ï¿½ï¿½ï¿½Ï¢
+	 * 
+	 * @param context
+	 * @return
+	 */
+	public static DisplayMetrics getScreenSize(Context context)
+	{
+		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+		DisplayMetrics dm = new DisplayMetrics();
+		wm.getDefaultDisplay().getMetrics(dm);
+		return dm;
+	}
 
-    /**
-     * »ñÈ¡appÄÚ´æ´óÐ¡
-     * @param context
-     * @return
-     */
-    public static int getAppMemerySize(Context context)
-    {
-        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        return am.getMemoryClass();
-    }
+	/**
+	 * ï¿½ï¿½È¡appï¿½Ú´ï¿½ï¿½Ð¡
+	 * 
+	 * @param context
+	 * @return
+	 */
+	public static int getAppMemerySize(Context context)
+	{
+		ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+		return am.getMemoryClass();
+	}
 
+	// bitmap -> byte[]
+	public static byte[] getBitmapData(Bitmap bitmap)
+	{
+		if (bitmap != null)
+		{
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+			return bos.toByteArray();
+		}
 
-    //bitmap -> byte[]
-    public static byte[] getBitmapData(Bitmap bitmap)
-    {
-        if (bitmap != null)
-        {
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-            return bos.toByteArray();
-        }
+		return null;
+	}
 
-        return null;
-    }
+	public static void toast(Context context, CharSequence charSequence, boolean islong)
+	{
+		Toast.makeText(context, charSequence, islong ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT).show();
+	}
 
-    public static void toast(Context context, CharSequence charSequence, boolean islong)
-    {
-        Toast.makeText(context, charSequence, islong ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT).show();
-    }
+	public static void toast(Context context, CharSequence charSequence)
+	{
+		toast(context, charSequence, false);
+	}
 
-    public static void toast(Context context, CharSequence charSequence)
-    {
-        toast(context, charSequence, false);
-    }
+	/**
+	 * dp -> px
+	 * 
+	 * @param context
+	 * @param dp
+	 * @return
+	 */
+	public static int dpToPiexl(Context context, float dp)
+	{
+		DisplayMetrics dm = getScreenSize(context);
+		return (int) (dp * dm.density + 0.5f);
+	}
 
-    /**
-     * dp -> px
-     * @param context
-     * @param dp
-     * @return
-     */
-    public static int dpToPiexl(Context context, float dp)
-    {
-        DisplayMetrics dm = getScreenSize(context);
-        return (int) (dp * dm.density + 0.5f);
-    }
+	/**
+	 * px -> dp
+	 * 
+	 * @param context
+	 * @param px
+	 * @return
+	 */
+	public static int piexlToDp(Context context, float px)
+	{
+		DisplayMetrics dm = getScreenSize(context);
+		return (int) (px / dm.density + 0.5f);
+	}
 
-    /**
-     * px -> dp
-     * @param context
-     * @param px
-     * @return
-     */
-    public static int piexlToDp(Context context, float px)
-    {
-        DisplayMetrics dm = getScreenSize(context);
-        return (int) (px / dm.density + 0.5f);
-    }
+	/**
+	 * ï¿½ï¿½×ª
+	 * 
+	 * @param act
+	 * @param clzz
+	 * @param finish
+	 * @param enter
+	 * @param exit
+	 */
+	public static void startActivity(Activity act, Class<? extends Activity> clzz, boolean finish, int enter, int exit)
+	{
+		Intent intent = new Intent(act, clzz);
+		act.startActivity(intent);
+		if (finish)
+		{
+			act.finish();
+		}
+		if (act.getResources().getAnimation(enter) != null && act.getResources().getAnimation(exit) != null)
+		{
+			act.overridePendingTransition(enter, exit);
+		}
+	}
 
-    /**
-     * Ìø×ª
-     * @param act
-     * @param clzz
-     * @param finish
-     * @param enter
-     * @param exit
-     */
-    public static void startActivity(Activity act, Class<? extends Activity> clzz, boolean finish, int enter, int exit)
-    {
-        Intent intent = new Intent(act, clzz);
-        act.startActivity(intent);
-        if (finish)
-        {
-            act.finish();
-        }
-        if (act.getResources().getAnimation(enter) != null && act.getResources().getAnimation(exit) != null)
-        {
-            act.overridePendingTransition(enter, exit);
-        }
-    }
+	/**
+	 * ï¿½ï¿½×ª
+	 * 
+	 * @param act
+	 * @param clzz
+	 * @param finish
+	 */
+	public static void startActivity(Activity act, Class<? extends Activity> clzz, boolean finish)
+	{
+		startActivity(act, clzz, finish, 0, 0);
+	}
 
-    /**
-     * Ìø×ª
-     * @param act
-     * @param clzz
-     * @param finish
-     */
-    public static void startActivity(Activity act, Class<? extends Activity> clzz, boolean finish)
-    {
-        startActivity(act, clzz, finish, 0, 0);
-    }
+	/**
+	 * ï¿½ï¿½×ªÒ³ï¿½ï¿½ Ä¬ï¿½Ï²ï¿½ï¿½Ø±ï¿½ï¿½ï¿½Ò»Ò³ï¿½ï¿½
+	 * 
+	 * @param act
+	 * @param clzz
+	 */
+	public static void startActivity(Activity act, Class<? extends Activity> clzz)
+	{
+		startActivity(act, clzz, false);
+	}
 
-    /**
-     * Ìø×ªÒ³Ãæ Ä¬ÈÏ²»¹Ø±ÕÉÏÒ»Ò³Ãæ
-     * @param act
-     * @param clzz
-     */
-    public static void startActivity(Activity act, Class<? extends Activity> clzz)
-    {
-        startActivity(act, clzz, false);
-    }
+	/**
+	 * ï¿½ï¿½Ò³ï¿½ï¿½È´ï¿½ï¿½ï¿½ï¿½Ø½ï¿½ï¿½
+	 * 
+	 * @param act
+	 * @param clazz
+	 * @param requestCode
+	 */
+	public static void startActivityForResult(Activity act, Class<? extends Activity> clazz, int requestCode)
+	{
+		startActivityForResult(act, new Intent(act, clazz), requestCode);
+	}
 
-    /**
-     * ´ò¿ªÒ³ÃæµÈ´ý·µ»Ø½á¹û
-     * @param act
-     * @param clazz
-     * @param requestCode
-     */
-    public static void startActivityForResult(Activity act,Class<? extends Activity> clazz,int requestCode){
-        startActivityForResult(act, new Intent(act, clazz), requestCode);
-    }
+	/**
+	 * ï¿½ï¿½Ò³ï¿½ï¿½È´ï¿½ï¿½ï¿½ï¿½Ø½ï¿½ï¿½
+	 * 
+	 * @param act
+	 * @param intent
+	 * @param requestCode
+	 */
+	public static void startActivityForResult(Activity act, Intent intent, int requestCode)
+	{
+		act.startActivityForResult(intent, requestCode);
+	}
 
-    /**
-     * ´ò¿ªÒ³ÃæµÈ´ý·µ»Ø½á¹û
-     * @param act
-     * @param intent
-     * @param requestCode
-     */
-    public static void startActivityForResult(Activity act,Intent intent,int requestCode){
-        act.startActivityForResult(intent, requestCode);
-    }
+	/**
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªbyteï¿½ï¿½ï¿½ï¿½
+	 * 
+	 * @param inputStream
+	 * @return
+	 */
+	public byte[] getFileData(InputStream inputStream)
+	{
+		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+		int temp = -1;
+		try
+		{
+			while ((temp = inputStream.read()) != -1)
+			{
+				byteArrayOutputStream.write(temp);
+			}
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		return byteArrayOutputStream.toByteArray();
+	}
 
-    /**
-     * Êý¾ÝÁ÷×ªbyteÊý×é
-     * @param inputStream
-     * @return
-     */
-    public byte[] getFileData(InputStream inputStream)
-    {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        int temp = -1;
-        try
-        {
-            while ((temp = inputStream.read()) != -1)
-            {
-                byteArrayOutputStream.write(temp);
-            }
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-        return byteArrayOutputStream.toByteArray();
-    }
+	/**
+	 * ï¿½Ç·ï¿½ï¿½Ç¿Õ¼ï¿½ï¿½ï¿½
+	 * 
+	 * @param collection
+	 * @return
+	 */
+	public static boolean isListEmpty(Collection collection)
+	{
+		if (collection == null || collection.isEmpty())
+		{
+			return true;
+		}
+		return false;
+	}
 
-    /**
-     * ÊÇ·ñÊÇ¿Õ¼¯ºÏ
-     * @param collection
-     * @return
-     */
-    public static boolean isListEmpty(Collection collection)
-    {
-        if (collection == null || collection.isEmpty())
-        {
-            return true;
-        }
-        return false;
-    }
-
-    /**|
-     * ÊÇ·ñÊÇ¿Õ×Ö·û´®
-     * @param charSequence
-     * @return
-     */
-    public static boolean isEmptyText(CharSequence charSequence){
-        return TextUtils.isEmpty(charSequence);
-    }
+	/**
+	 * | ï¿½Ç·ï¿½ï¿½Ç¿ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+	 * 
+	 * @param charSequence
+	 * @return
+	 */
+	public static boolean isEmptyText(CharSequence charSequence)
+	{
+		return TextUtils.isEmpty(charSequence);
+	}
 }

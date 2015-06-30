@@ -5,14 +5,12 @@ import java.util.List;
 import java.util.Map;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * <p>viewpager µÄ³éÏópageradapter createview³õÊ¼»¯ÊÓÍ¼ onscroll ·½·¨ÔÚ·­Ò³Ê±µ÷ÓÃ ÓÉÓÚ»¬¶¯¶¯»­</p>
+ * <p>viewpager ï¿½Ä³ï¿½ï¿½ï¿½pageradapter createviewï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Í¼ onscroll ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½Ò³Ê±ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
  *
  * Created by xstar on 2015/6/29.
  */

@@ -32,9 +32,9 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler
 	/** 是否开启日志输出, 在Debug状态下开启, 在Release状态下关闭以提升程序性能 */
 	public static final boolean				DEBUG						= true;
 	/** CrashHandler实例 */
-	private static CrashHandler INSTANCE;
+	private static CrashHandler				INSTANCE;
 	/** 程序的Context对象 */
-	private Context						mContext;
+	private Context							mContext;
 	/** 系统默认的UncaughtException处理类 */
 	private Thread.UncaughtExceptionHandler	mDefaultHandler;
 
@@ -91,8 +91,9 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler
 	@Override
 	public void uncaughtException(Thread thread, Throwable ex)
 	{
-		if(onCrashListener!=null){
-			onCrashListener.onCrash(mContext,thread,ex);
+		if (onCrashListener != null)
+		{
+			onCrashListener.onCrash(mContext, thread, ex);
 		}
 	}
 
@@ -214,37 +215,42 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler
 		this.isSave = isSave;
 	}
 
-	public interface OnCrashListener{
+	public interface OnCrashListener
+	{
 		public void onCrash(Context context, Thread thread, Throwable ex);
 	}
 
-	private OnCrashListener onCrashListener=new OnCrashListener() {
-		@Override
-		public void onCrash(Context context, Thread thread, Throwable ex) {
-			new Thread()
-			{
-				@Override
-				public void run()
-				{
-					Looper.prepare();
-					Toast.makeText(mContext,"系统崩溃！",Toast.LENGTH_LONG).show();
-					android.os.Process.killProcess(android.os.Process.myPid());
-					System.exit(0);
-					Looper.loop();
-				}
-			}.start();
-			if (isSave)
-			{
-				saveCrashInfoToFile(ex);
-			}
-		}
-	};
+	private OnCrashListener	onCrashListener	= new OnCrashListener()
+											{
+												@Override
+												public void onCrash(Context context, Thread thread, Throwable ex)
+												{
+													new Thread()
+													{
+														@Override
+														public void run()
+														{
+															Looper.prepare();
+															Toast.makeText(mContext, "系统崩溃！", Toast.LENGTH_LONG).show();
+															android.os.Process.killProcess(android.os.Process.myPid());
+															System.exit(0);
+															Looper.loop();
+														}
+													}.start();
+													if (isSave)
+													{
+														saveCrashInfoToFile(ex);
+													}
+												}
+											};
 
-	public OnCrashListener getOnCrashListener() {
+	public OnCrashListener getOnCrashListener()
+	{
 		return onCrashListener;
 	}
 
-	public void setOnCrashListener(OnCrashListener onCrashListener) {
+	public void setOnCrashListener(OnCrashListener onCrashListener)
+	{
 		this.onCrashListener = onCrashListener;
 	}
 }

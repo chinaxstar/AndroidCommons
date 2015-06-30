@@ -11,7 +11,9 @@ import android.widget.BaseAdapter;
 
 /**
  *
- * <P>ÓÃÓÚadapterview ÉèÖÃÊÊÅäÆ÷</P>
+ * <P>
+ * adapterview çš„é€‚é…å™¨
+ * </P>
  * Created by xstar on 2015/6/17.
  */
 public abstract class ItemsAdapter<T> extends BaseAdapter
