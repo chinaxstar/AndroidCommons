@@ -1,12 +1,4 @@
-package xstar.com.commons.exception;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.lang.reflect.Field;
-import java.util.Properties;
+package xstar.com.library.commons.exception;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -17,6 +9,14 @@ import android.os.Environment;
 import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.lang.reflect.Field;
+import java.util.Properties;
 
 /**
  * <P>

@@ -1,6 +1,4 @@
-package xstar.com.commons.adapter;
-
-import java.util.List;
+package xstar.com.library.commons.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,8 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 
+import java.util.List;
+
 /**
- * <P>ÓÃÓÚexpandablelistViewµÄÊÊÅäÆ÷</P>
+ * ã€€expandablelistview adapter
+ *
  * Created by xstar on 2015/6/18.
  */
 public abstract class ExpandableItemAdapter<Parent, Child> extends BaseExpandableListAdapter

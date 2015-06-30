@@ -1,13 +1,13 @@
-package xstar.com.commons.adapter;
-
-import java.lang.ref.WeakReference;
-import java.util.List;
+package xstar.com.library.commons.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 /**
  *

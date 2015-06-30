@@ -1,9 +1,4 @@
-package xstar.com.commons.utils;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
+package xstar.com.library.commons;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -14,6 +9,11 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 import android.widget.Toast;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
 
 /**
  * Created by Administrator on 2015/6/29.
