@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     tools:context="xstar.com.commons.MainActivity">
 
-    <android.support.v4.view.ViewPager
+    <xstar.com.library.commons.view.QuickViewPager
         android:id="@+id/viewpagers"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

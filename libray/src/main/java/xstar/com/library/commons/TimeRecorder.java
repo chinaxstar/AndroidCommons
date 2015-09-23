@@ -72,7 +72,7 @@ public class TimeRecorder
 	public long getLastInterval()
 	{
 		long interval = -1;
-		if (timePoints.size() > 2)
+		if (timePoints.size() > 1)
 		{
 			long t1 = timePoints.get(timePoints.size() - 1);
 			long t2 = timePoints.get(timePoints.size() - 2);
