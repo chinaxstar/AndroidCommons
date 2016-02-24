@@ -46,6 +46,9 @@
             android:name=".DataShowActivity"
             android:label="@string/title_activity_data_show" >
         </activity>
+        <activity
+            android:name=".ButtonTestActivity"/>
+        <activity android:name=".MarqeeTextActivity"/>
     </application>
 
 </manifest>

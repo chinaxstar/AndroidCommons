@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">#fff</item>
+        <item name="android:textColor">#000</item>
+    </style>
+
+    <style name="DialogTheme" parent="MyDialogStyle">
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="MyDialogStyle">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:editTextColor">#000</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
+        <!--<item name="android:alertDialogTheme">@style/Theme.MyAlertDialogTheme</item>-->
+        <item name="android:typeface">sans</item>
+        <item name="android:launchMode">singleInstance</item>
+    </style>
+
+    <style name="Theme.MyAlertDialogTheme" parent="android:Theme.Holo.Light.Dialog">
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
+</resources>

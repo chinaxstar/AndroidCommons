@@ -1,4 +1,4 @@
-package xstar.com.library.commons;
+package com.xstar.javacommons;
 
 import android.text.TextUtils;
 

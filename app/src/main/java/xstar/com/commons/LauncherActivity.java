@@ -44,6 +44,8 @@ public class LauncherActivity extends Activity {
         itemList.add(new PagesItem("超出视图 test",MenuListActivity.class));
         itemList.add(new PagesItem("二维码生成",TwoDGenereteActivity.class));
         itemList.add(new PagesItem("camera",CameraActivity.class));
+        itemList.add(new PagesItem("buttontest",ButtonTestActivity.class));
+        itemList.add(new PagesItem("跑马灯",MarqeeTextActivity.class));
         adapter.setItemsList(itemList);
     }
 

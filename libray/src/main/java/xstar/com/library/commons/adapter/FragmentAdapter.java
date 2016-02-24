@@ -5,9 +5,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
 
+import com.xstar.javacommons.Empty;
+
 import java.util.List;
 
-import xstar.com.library.commons.Empty;
 
 /**
  * Created by Administrator on 2015/9/22.
