@@ -1,6 +1,9 @@
-package com.xstar.javacommons;
+package xstar.com.library.commons.javacommons;
 
 import android.util.Log;
+
+import java.util.Collection;
+import java.util.List;
 
 /**
  * 字符串工具类
@@ -81,5 +84,31 @@ public final class StringTools {
 
     public static String replaceByWhy(String str, String... args) {
         return generateStringByPlaceholder(str, "?", args);
+    }
+
+    public static final String DEFULT_TASTE_GAPS = ",";
+    private static StringBuilder stringBuilder = new StringBuilder();
+
+    public static <T> String getListStr(List<T> list) {
+        return getListStr(list, new ToStr<T>() {
+            @Override
+            public String toStr(T t) {
+                return t.toString();
+            }
+        }, DEFULT_TASTE_GAPS);
+    }
+
+    public static <T> String getListStr(Collection<T> list, ToStr<T> toStr, String gaps) {
+        if (!Empty.isNotEmpty(list)) return "";
+        stringBuilder.setLength(0);
+        for (T t : list) {
+            stringBuilder.append(toStr.toStr(t)).append(gaps);
+        }
+        stringBuilder.delete(stringBuilder.length() - 1, stringBuilder.length());
+        return stringBuilder.toString();
+    }
+
+    public interface ToStr<T> {
+        String toStr(T t);
     }
 }

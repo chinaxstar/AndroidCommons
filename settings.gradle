@@ -1,1 +1,1 @@
-include ':app', ':libray', ':javacommons'
+include ':app', ':libray'

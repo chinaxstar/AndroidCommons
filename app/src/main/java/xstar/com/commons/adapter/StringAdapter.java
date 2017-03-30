@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import xstar.com.commons.R;
 import xstar.com.commons.entity.PagesItem;
 import xstar.com.library.commons.adapter.ItemsAdapter;
 
@@ -19,9 +20,10 @@ public class StringAdapter extends ItemsAdapter<PagesItem> {
 
     @Override
     protected View createView(PagesItem item, int position, ViewGroup parent, LayoutInflater layoutInflater) {
-        View view=layoutInflater.inflate(android.R.layout.simple_list_item_1,null);
+        View view=layoutInflater.inflate(R.layout.simple_string_item_layout,parent,false);
         return view;
     }
+
 
     @Override
     protected void bindView(PagesItem item, int position, View view) {

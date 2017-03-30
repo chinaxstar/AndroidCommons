@@ -5,9 +5,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
 
-import com.xstar.javacommons.Empty;
 
 import java.util.List;
+
+import xstar.com.library.commons.javacommons.Empty;
 
 
 /**
@@ -26,19 +27,19 @@ public class FragmentAdapter<T extends Fragment> extends FragmentPagerAdapter
 	@Override
 	public Fragment getItem(int position)
 	{
-		return Empty.isCollectionEmpty(itemList) ? null : itemList.get(position);
+		return !Empty.isNotEmpty(itemList) ? null : itemList.get(position);
 	}
 
 	@Override
 	public int getCount()
 	{
-		return Empty.isCollectionEmpty(itemList) ? 0 : itemList.size();
+		return !Empty.isNotEmpty(itemList) ? 0 : itemList.size();
 	}
 
 	@Override
 	public CharSequence getPageTitle(int position)
 	{
-		return Empty.isCollectionEmpty(titles) ? null : titles.get(position);
+		return !Empty.isNotEmpty(titles) ? null : titles.get(position);
 	}
 
 	@Override

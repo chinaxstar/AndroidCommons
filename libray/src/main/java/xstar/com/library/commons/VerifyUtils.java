@@ -3,7 +3,8 @@ package xstar.com.library.commons;
 import android.graphics.drawable.Drawable;
 import android.widget.EditText;
 
-import com.xstar.javacommons.Empty;
+import xstar.com.library.commons.javacommons.Empty;
+
 
 /**
  * @author xstar on 2015/10/27.
@@ -13,7 +14,7 @@ public class VerifyUtils
 
 	public static boolean isEditTextNull(EditText editText)
 	{
-		return Empty.isTextEmpty(editText.getText().toString());
+		return !Empty.isNotEmpty(editText.getText().toString());
 	}
 
 	/**

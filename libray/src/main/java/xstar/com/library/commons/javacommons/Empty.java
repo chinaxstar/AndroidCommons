@@ -1,6 +1,4 @@
-package com.xstar.javacommons;
-
-import android.text.TextUtils;
+package xstar.com.library.commons.javacommons;
 
 import java.util.Collection;
 import java.util.Iterator;

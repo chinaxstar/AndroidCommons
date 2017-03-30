@@ -46,6 +46,7 @@ public class LauncherActivity extends Activity {
         itemList.add(new PagesItem("camera",CameraActivity.class));
         itemList.add(new PagesItem("buttontest",ButtonTestActivity.class));
         itemList.add(new PagesItem("跑马灯",MarqeeTextActivity.class));
+        itemList.add(new PagesItem("截屏",CutScreenActivity.class));
         adapter.setItemsList(itemList);
     }
 

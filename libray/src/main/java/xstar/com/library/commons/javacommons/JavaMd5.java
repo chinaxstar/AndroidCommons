@@ -1,4 +1,4 @@
-package com.xstar.javacommons;
+package xstar.com.library.commons.javacommons;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
