@@ -14,7 +14,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import xstar.com.library.commons.Views;
+import xstar.com.library.commons.ViewUtils;
 
 public class DialogFragmentActivity extends Activity {
 
@@ -25,8 +25,8 @@ public class DialogFragmentActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dialog_fragment);
-        list_item= Views.find(this,R.id.list_item);
-        data.add("但按钮弹出框");
+        list_item= ViewUtils.find(this,R.id.list_item);
+        data.add("点按钮弹出框");
         adapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,data);
         list_item.setAdapter(adapter);
         list_item.setOnItemClickListener(new AdapterView.OnItemClickListener() {

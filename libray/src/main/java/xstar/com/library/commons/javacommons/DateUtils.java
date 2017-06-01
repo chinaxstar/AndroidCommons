@@ -1,6 +1,8 @@
 package xstar.com.library.commons.javacommons;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -28,4 +30,26 @@ public class DateUtils {
     public static String formatTime(Date date) {
         return format(timePatten, date);
     }
+
+    public static Calendar parse(String pattern, String dateStr) throws ParseException {
+        simpleDateFormat.applyPattern(pattern);
+        Date date = simpleDateFormat.parse(dateStr);
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        return c;
+    }
+
+    public static Calendar createCalendar() {
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
+        return c;
+    }
+
+    public static Calendar createCalendar(long mils) {
+        Calendar c = createCalendar();
+        c.setTimeInMillis(c.getTimeInMillis() + mils);
+        return c;
+    }
+
+
 }

@@ -27,19 +27,19 @@ public class FragmentAdapter<T extends Fragment> extends FragmentPagerAdapter
 	@Override
 	public Fragment getItem(int position)
 	{
-		return !Empty.isNotEmpty(itemList) ? null : itemList.get(position);
+		return Empty.notEmpty(itemList) ?  itemList.get(position):null;
 	}
 
 	@Override
 	public int getCount()
 	{
-		return !Empty.isNotEmpty(itemList) ? 0 : itemList.size();
+		return Empty.notEmpty(itemList) ? itemList.size():0;
 	}
 
 	@Override
 	public CharSequence getPageTitle(int position)
 	{
-		return !Empty.isNotEmpty(titles) ? null : titles.get(position);
+		return Empty.notEmpty(titles) ?  titles.get(position):null;
 	}
 
 	@Override

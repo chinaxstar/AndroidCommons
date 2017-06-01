@@ -3,9 +3,13 @@ package xstar.com.library.commons;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.StringRes;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -14,7 +18,8 @@ import android.widget.Toast;
 import java.io.File;
 
 /**
- * Created by xstra on 2015/9/22.
+ * Creater xstar
+ * Date: 2015/9/22.
  */
 public class AndroidHelper {
     private static Context context;
@@ -60,6 +65,10 @@ public class AndroidHelper {
 
     public static void toast(CharSequence charSequence) {
         toast(charSequence, false);
+    }
+
+    public static void toast(@StringRes int resId) {
+        toast(context.getString(resId), false);
     }
 
     /**
@@ -121,6 +130,14 @@ public class AndroidHelper {
     }
 
     /**
+     * sp -> px
+     */
+    public static int spToPiexl(float dp) {
+        DisplayMetrics dm = getScreenSize();
+        return (int) (dp * dm.scaledDensity + 0.5f);
+    }
+
+    /**
      * dp -> px
      */
     public static int dpToPiexl(float dp) {
@@ -170,6 +187,29 @@ public class AndroidHelper {
         editText.setEnabled(true);
         editText.setClickable(true);
         editText.setFocusable(true);
+    }
+
+    // 获取ApiKey
+    public static String getMetaValue(String metaKey) {
+        Bundle metaData = null;
+        String apiKey = null;
+        if (context == null || metaKey == null) {
+            return null;
+        }
+        try {
+            ApplicationInfo ai = context.getPackageManager()
+                    .getApplicationInfo(context.getPackageName(),
+                            PackageManager.GET_META_DATA);
+            if (null != ai) {
+                metaData = ai.metaData;
+            }
+            if (null != metaData) {
+                apiKey = metaData.getString(metaKey);
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e("AndroidHelper", "error " + e.getMessage());
+        }
+        return apiKey;
     }
 
 }

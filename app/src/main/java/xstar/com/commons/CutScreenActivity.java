@@ -2,10 +2,9 @@ package xstar.com.commons;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -15,7 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import xstar.com.library.commons.Views;
+import xstar.com.library.commons.ViewUtils;
 import xstar.com.library.commons.handler.HandlerAbs;
 
 public class CutScreenActivity extends Activity {
@@ -26,7 +25,7 @@ public class CutScreenActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cut_screen);
-        content_rl = Views.find(this, R.id.content_rl);
+        content_rl = ViewUtils.find(this, R.id.content_rl);
 
     }
 

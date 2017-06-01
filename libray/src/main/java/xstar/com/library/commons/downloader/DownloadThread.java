@@ -1,6 +1,5 @@
-package xstar.com.downloader.downloader;
+package xstar.com.library.commons.downloader;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
@@ -8,8 +7,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
+
+import javax.net.ssl.HttpsURLConnection;
 
 /**
  * Created by xstar on 2017-03-02.
@@ -46,11 +46,15 @@ public class DownloadThread extends Thread
 		{
 
 			URL url = new URL(url_str);
-			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            URLConnection connection = (URLConnection) url.openConnection();
 			connection.setAllowUserInteraction(true);
 			sbuilder.append("bytes=").append(start_pos).append("-").append(end_pos);
 			connection.addRequestProperty("Range", sbuilder.toString());
-            code=connection.getResponseCode();
+            if (connection instanceof HttpsURLConnection){
+                code=((HttpsURLConnection)connection).getResponseCode();
+            }else if (connection instanceof HttpURLConnection){
+                code=((HttpURLConnection)connection).getResponseCode();
+            }
 			InputStream inputStream = connection.getInputStream();
 
 			randomAccessFile.seek(start_pos);

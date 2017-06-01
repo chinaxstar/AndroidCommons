@@ -10,7 +10,7 @@ import com.google.zxing.Result;
 import com.google.zxing.WriterException;
 
 import xstar.com.commons.twod.ZxingHelper;
-import xstar.com.library.commons.Views;
+import xstar.com.library.commons.ViewUtils;
 
 public class TwoDGenereteActivity extends Activity
 {
@@ -33,10 +33,10 @@ public class TwoDGenereteActivity extends Activity
 		}
 		if (bitmap != null)
 		{
-			ImageView imageView = Views.find(this, R.id.image);
+			ImageView imageView = ViewUtils.find(this, R.id.image);
 			imageView.setImageBitmap(bitmap);
 			Result result = ZxingHelper.getInstance().decodeBitmap(bitmap, 400, 400);
-			TextView content_text = Views.find(this, R.id.content_text);
+			TextView content_text = ViewUtils.find(this, R.id.content_text);
             content_text.setText(result.getText());
 		}
 	}

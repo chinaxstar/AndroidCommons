@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import xstar.com.library.commons.Views;
+import xstar.com.library.commons.ViewUtils;
 
 /**
  * Created by Administrator on 2015/8/24.
@@ -30,14 +30,14 @@ public class DialogActivity extends Activity {
             height = (int) (metrics.heightPixels * 0.628f);
         }
         setContentView(R.layout.dialog_layout);
-        content_view = Views.find(this, R.id.content_view);
-        TextView content_text = Views.find(this, R.id.content_text);
+        content_view = ViewUtils.find(this, R.id.content_view);
+        TextView content_text = ViewUtils.find(this, R.id.content_text);
         text="但按钮弹出框";
         if (!TextUtils.isEmpty(text)) {
             content_text.setText(text);
         }
-        negative = Views.find(this, R.id.negative);
-        positive = Views.find(this, R.id.positive);
+        negative = ViewUtils.find(this, R.id.negative);
+        positive = ViewUtils.find(this, R.id.positive);
     }
 
     public void cancel(View view) {

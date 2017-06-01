@@ -6,7 +6,26 @@
 
     <uses-feature android:name="android.hardware.camera"/>
 
-    <application android:theme="@style/AppTheme">
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+
+    <application
+        android:name=".App"
+        android:theme="@style/AppTheme"
+        >
+        <meta-data
+            android:name="app_key"
+            android:value="123"/>
+
         <activity
             android:name=".LauncherActivity"
             android:label="@string/title_activity_main">
@@ -49,6 +68,14 @@
         <activity android:name=".ButtonTestActivity"/>
         <activity android:name=".MarqeeTextActivity"/>
         <activity android:name=".CutScreenActivity">
+        </activity>
+        <activity android:name=".Hack50Activity">
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings">
+        </activity>
+        <activity android:name=".hack23.Hack23Activity">
         </activity>
     </application>
 

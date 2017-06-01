@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 22
+        minSdkVersion 14
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
     }
@@ -20,10 +20,39 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:support-v4:22.2.1'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.android.support:cardview-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+}
 
-    compile 'com.android.support:appcompat-v7:22.2.1'
-    compile 'com.android.support:recyclerview-v7:22.2.1'
-    compile 'com.android.support:cardview-v7:22.2.1'
-    compile 'com.android.support:design:22.2.1'
+
+apply plugin: 'maven'
+
+def MAVEN_LOCAL_PATH = 'http://127.0.0.1:8081/repository/xstarlibs/'
+def ARTIFACT_ID = 'libray'
+def VERSION_NAME = '1.0.0'
+def GROUP_ID = 'xstar.com.library.commons'
+def ACCOUNT = 'admin'
+def PASSWORD = 'admin123'
+
+//脚本：将Lib打成aar包上传至maven私有库
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: MAVEN_LOCAL_PATH) {
+                authentication(userName: ACCOUNT, password: PASSWORD)
+            }
+            pom.project {
+                groupId GROUP_ID
+                artifactId ARTIFACT_ID
+                version VERSION_NAME
+                packaging 'aar'
+            }
+        }
+    }
 }

@@ -11,7 +11,7 @@ import java.util.List;
 
 import xstar.com.commons.R;
 import xstar.com.library.commons.AndroidHelper;
-import xstar.com.library.commons.Views;
+import xstar.com.library.commons.ViewUtils;
 import xstar.com.library.commons.adapter.ItemsAdapter;
 
 /**
@@ -35,8 +35,8 @@ public class MenuAdaptr extends ItemsAdapter<String>
 	{
 		View view = layoutInflater.inflate(R.layout.menu_list_item, null);
 		ViewHolder viewHolder = new ViewHolder();
-		viewHolder.textView = Views.find(view, R.id.textview);
-		viewHolder.underLine = Views.find(view, R.id.underLine);
+		viewHolder.textView = ViewUtils.find(view, R.id.textview);
+		viewHolder.underLine = ViewUtils.find(view, R.id.underLine);
 		view.setTag(viewHolder);
 		return view;
 	}

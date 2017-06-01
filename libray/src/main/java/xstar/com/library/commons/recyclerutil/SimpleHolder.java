@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import xstar.com.library.commons.Views;
+import xstar.com.library.commons.ViewUtils;
 
 /**
  * Created by xstar on 2016-10-19.
@@ -38,7 +38,7 @@ public class SimpleHolder extends RecyclerView.ViewHolder {
     public void initRes(int... resIds) {
         if (resIds != null) {
             for (int res : resIds) {
-                innerMap.put(res, Views.find(this.itemView, res));
+                innerMap.put(res, ViewUtils.find(this.itemView, res));
             }
         }
     }
@@ -46,7 +46,7 @@ public class SimpleHolder extends RecyclerView.ViewHolder {
     public void initRes(List<Integer> resIds) {
         if (resIds != null) {
             for (int res : resIds) {
-                innerMap.put(res, Views.find(this.itemView, res));
+                innerMap.put(res, ViewUtils.find(this.itemView, res));
             }
         }
     }

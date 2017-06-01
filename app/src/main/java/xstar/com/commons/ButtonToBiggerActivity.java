@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import xstar.com.library.commons.AndroidHelper;
-import xstar.com.library.commons.Views;
+import xstar.com.library.commons.ViewUtils;
 import xstar.com.library.commons.listener.PointTrigger;
 import xstar.com.library.commons.listener.XmlAnimatorPointTrigger;
 
@@ -27,7 +27,7 @@ public class ButtonToBiggerActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_button_to_bigger);
-        button=Views.find(this,R.id.button);
+        button= ViewUtils.find(this,R.id.button);
         button.setOnTouchListener(new XmlAnimatorPointTrigger(this,button,R.animator.to_bigger,0));
 		button.setOnClickListener(new View.OnClickListener() {
 			@Override

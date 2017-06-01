@@ -34,7 +34,7 @@ public abstract class ObjAdapter<T, VH extends RecyclerView.ViewHolder> extends 
 
     @Override
     public int getItemCount() {
-        return Empty.isNotEmpty(itemList) ? itemList.size() : 0;
+        return Empty.notEmpty(itemList) ? itemList.size() : 0;
     }
 
     public interface OnItemClickListner {

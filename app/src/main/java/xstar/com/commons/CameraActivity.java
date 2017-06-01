@@ -28,7 +28,7 @@ import java.io.IOException;
 import java.util.List;
 
 import xstar.com.library.commons.AndroidHelper;
-import xstar.com.library.commons.Views;
+import xstar.com.library.commons.ViewUtils;
 import xstar.com.library.commons.handler.HandlerAbs;
 
 public class CameraActivity extends Activity implements SurfaceHolder.Callback {
@@ -44,8 +44,8 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
         dm = AndroidHelper.getScreenSize();
-        surfaceview = Views.find(this, R.id.surfaceview);
-        take_btn = Views.find(this, R.id.take_btn);
+        surfaceview = ViewUtils.find(this, R.id.surfaceview);
+        take_btn = ViewUtils.find(this, R.id.take_btn);
         surfaceHolder = surfaceview.getHolder();
         surfaceHolder.addCallback(this);
     }

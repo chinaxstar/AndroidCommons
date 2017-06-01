@@ -16,7 +16,7 @@ import java.util.List;
 
 import xstar.com.commons.adapter.MenuAdaptr;
 import xstar.com.library.commons.AndroidHelper;
-import xstar.com.library.commons.Views;
+import xstar.com.library.commons.ViewUtils;
 
 
 public class MenuListActivity extends Activity {
@@ -30,9 +30,9 @@ public class MenuListActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_list);
         dm= AndroidHelper.getScreenSize();
-        left_menu_ll=Views.find(this,R.id.left_menu_ll);
+        left_menu_ll= ViewUtils.find(this,R.id.left_menu_ll);
         left_menu_ll.setLayoutParams(new RelativeLayout.LayoutParams(dm.widthPixels/3,LinearLayout.LayoutParams.MATCH_PARENT));
-        menu_list = Views.find(this, R.id.menu_list);
+        menu_list = ViewUtils.find(this, R.id.menu_list);
         List<String> list=new ArrayList<>();
         for(int i=1;i<21;i++){
             list.add("item "+i);

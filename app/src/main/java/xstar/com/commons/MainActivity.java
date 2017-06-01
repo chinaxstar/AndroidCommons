@@ -14,7 +14,7 @@ import xstar.com.commons.adapter.SimplePagerAdapter;
 import xstar.com.commons.transformer.CubeTransformer;
 import xstar.com.commons.transformer.ZoomOutTransformer;
 import xstar.com.library.commons.AndroidHelper;
-import xstar.com.library.commons.Views;
+import xstar.com.library.commons.ViewUtils;
 
 
 public class MainActivity extends Activity {
@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        viewPager= Views.find(this,R.id.viewpagers);
+        viewPager= ViewUtils.find(this,R.id.viewpagers);
         for(int i=1;i<101;i++){
             nums.add("PAGE"+i);
         }

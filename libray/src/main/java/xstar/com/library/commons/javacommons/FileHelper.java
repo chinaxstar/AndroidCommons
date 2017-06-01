@@ -13,19 +13,22 @@ public class FileHelper {
      * 生成文件
      */
     public static File createFileByPath(String dir) throws IOException {
+        System.out.println(dir);
+        int lastIndex = dir.lastIndexOf("/");
+        if (lastIndex != 0) {
+            String dir_parent = dir.substring(0, lastIndex);//文件夹
+            System.out.println(dir_parent);
+            File parent = new File(dir_parent);
+            if (!parent.exists()) {
+                if (parent.mkdirs()) System.out.println("文件夹创建成功！");
+                else System.out.println("文件夹创建失败！");
+            }
+            if (lastIndex == (dir.length() - 1)) return parent;//最后一个字符是/则是文件夹
+        }
+        //此时上级文件夹都已经建好
         File file = new File(dir);
-        if (file.isDirectory()) {
-            if (!file.exists()) {
-                file.mkdirs();
-            }
-        } else if (file.isFile()) {
-            int lastIndex = dir.lastIndexOf("/");
-            if (lastIndex != -1) {
-                createFileByPath(dir.substring(0, lastIndex + 1));
-            }
-            if (!file.exists()) {
-                file.createNewFile();
-            }
+        if (!file.exists()) {
+            file.createNewFile();
         }
         return file;
     }

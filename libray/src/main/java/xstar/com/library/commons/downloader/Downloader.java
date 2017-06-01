@@ -1,4 +1,4 @@
-package xstar.com.downloader.downloader;
+package xstar.com.library.commons.downloader;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,8 +6,6 @@ import java.io.RandomAccessFile;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.concurrent.ArrayBlockingQueue;
-
-import xstar.com.downloader.downloader.DownloadThread;
 
 /**
  * Created by xstar on 2017-03-02.

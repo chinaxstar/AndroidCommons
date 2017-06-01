@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import xstar.com.library.commons.Views;
+import xstar.com.library.commons.ViewUtils;
 
 public class DataShowActivity extends Activity {
 
@@ -17,7 +17,7 @@ public class DataShowActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_show);
-        content_linear= Views.find(this,R.id.content_linear);
+        content_linear= ViewUtils.find(this,R.id.content_linear);
         Bitmap bitmap=getIntent().getParcelableExtra("bitmap");
         content_linear.addView(showBitmap(bitmap));
     }

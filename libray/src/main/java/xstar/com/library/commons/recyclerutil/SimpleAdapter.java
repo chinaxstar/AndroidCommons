@@ -1,7 +1,9 @@
 package xstar.com.library.commons.recyclerutil;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 /**
@@ -40,5 +42,13 @@ public abstract class SimpleAdapter<T> extends ObjAdapter<T, SimpleHolder> {
 
     public void setItemIds(int... itemIds) {
         this.itemIds = itemIds;
+    }
+
+    interface OnItemClickListener<T> {
+        void onItemClick(View itemView, T t, int position);
+    }
+
+    interface OnItemLongClickListener<T> {
+        void onItemLongClick(View itemView, T t, int position);
     }
 }

@@ -3,6 +3,7 @@ package xstar.com.library.commons.javacommons;
 import android.util.Log;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ public final class StringTools {
 
     public static double parasDouble(String num) {
         double temp = 0;
-        if (Empty.isNotEmpty(num)) {
+        if (Empty.notEmpty(num)) {
             try {
                 temp = Double.parseDouble(num);
             } catch (Exception e) {
@@ -31,19 +32,19 @@ public final class StringTools {
         return temp;
     }
 
-    public static String formartMoney(double money, int bit) {
+    public static String formatMoney(double money, int bit) {
         if (bit == 0) {
             return money + "";
         }
         return String.format("%." + bit + "f", money);
     }
 
-    public static String formartMoney(double money) {
-        return formartMoney(money, 2);
+    public static String formatMoney(double money) {
+        return formatMoney(money, 2);
     }
 
-    public static String formartMoney(String money) {
-        return formartMoney(parasDouble(money));
+    public static String formatMoney(String money) {
+        return formatMoney(parasDouble(money));
     }
 
     public static String getUrlWithOutIp(String url) {
@@ -66,7 +67,7 @@ public final class StringTools {
         StringBuilder builder = new StringBuilder(str);
         int index = 0;
         int time = 0;
-        int len = Empty.isArrayEmpty(args) ? 0 : args.length;
+        int len = Empty.notEmpty(args) ? 0 : args.length;
         while (index != -1) {
             index = builder.indexOf(regex);
             if (index != -1) {
@@ -82,15 +83,15 @@ public final class StringTools {
         return builder.toString();
     }
 
-    public static String replaceByWhy(String str, String... args) {
+    public static String replace(String str, String... args) {
         return generateStringByPlaceholder(str, "?", args);
     }
 
     public static final String DEFULT_TASTE_GAPS = ",";
     private static StringBuilder stringBuilder = new StringBuilder();
 
-    public static <T> String getListStr(List<T> list) {
-        return getListStr(list, new ToStr<T>() {
+    public static <T> String Str(List<T> list) {
+        return Str(list, new ToStr<T>() {
             @Override
             public String toStr(T t) {
                 return t.toString();
@@ -98,8 +99,8 @@ public final class StringTools {
         }, DEFULT_TASTE_GAPS);
     }
 
-    public static <T> String getListStr(Collection<T> list, ToStr<T> toStr, String gaps) {
-        if (!Empty.isNotEmpty(list)) return "";
+    public static <T> String Str(Collection<T> list, ToStr<T> toStr, String gaps) {
+        if (!Empty.notEmpty(list)) return "";
         stringBuilder.setLength(0);
         for (T t : list) {
             stringBuilder.append(toStr.toStr(t)).append(gaps);
@@ -111,4 +112,12 @@ public final class StringTools {
     public interface ToStr<T> {
         String toStr(T t);
     }
+
+    private static StringBuilder mSB = new StringBuilder();
+
+    public static StringBuilder getBuilder(String str) {
+        mSB.setLength(0);
+        return mSB.append(str);
+    }
+
 }

@@ -36,6 +36,7 @@ public final class SystemUtil {
 
     /**
      * 获取IP地址
+     *  需要权限 CHANGE_WIFI_STATE ACCESS_WIFI_STATE
      */
     public static String getIpAddress(Context context) {
         WifiManager manager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
