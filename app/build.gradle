@@ -39,5 +39,5 @@ dependencies {
     compile 'com.android.support:support-v4:25.0.0'
     compile 'com.android.support:support-vector-drawable:25.0.0'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
-    compile project(':libray')
+    compile project(':library')
 }
